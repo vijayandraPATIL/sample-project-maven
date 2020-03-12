@@ -16,7 +16,19 @@
         <exec-maven-plugin>1.6.0</exec-maven-plugin>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>1.8</java.version>
     </properties>
+	
+	<distributionManagement>
+        <repository>
+        <id>nexus-releases</id>
+        <url>http://localhost:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -59,6 +71,18 @@
                 <configuration>
                     <mainClass>org.web3j.sample.Application</mainClass>
                 </configuration>
+            </plugin>
+			<plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>				
+            </plugin>
+			<plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>				
             </plugin>
         </plugins>
     </build>
